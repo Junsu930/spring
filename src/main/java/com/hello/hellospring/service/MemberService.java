@@ -4,12 +4,20 @@ import java.util.List;
 import com.hello.hellospring.domain.Member;
 import com.hello.hellospring.repository.MemberRepository;
 import com.hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+
 
     /**
      * 회원가입
